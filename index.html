@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mozahid — Apparel Sourcing, Bangladesh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canvas: #e4ddc9;
+    --canvas-2: #d8cfb4;
+    --paper: #f7f3e8;
+    --ink: #22201b;
+    --ink-soft: #4a473d;
+    --indigo: #2a425c;
+    --indigo-deep: #16232f;
+    --rust: #a2472c;
+    --olive: #6e7350;
+    --line: #b9ae90;
+    --line-soft: rgba(34,32,27,0.14);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --canvas: #1b2530;
+      --canvas-2: #212d3a;
+      --paper: #232f3c;
+      --ink: #ece6d6;
+      --ink-soft: #b9b29c;
+      --indigo: #a9c2d8;
+      --indigo-deep: #0e161e;
+      --rust: #d97a56;
+      --olive: #b7bd93;
+      --line: #3c4a58;
+      --line-soft: rgba(236,230,214,0.14);
+    }
+  }
+  :root[data-theme="dark"] {
+    --canvas: #1b2530;
+    --canvas-2: #212d3a;
+    --paper: #232f3c;
+    --ink: #ece6d6;
+    --ink-soft: #b9b29c;
+    --indigo: #a9c2d8;
+    --indigo-deep: #0e161e;
+    --rust: #d97a56;
+    --olive: #b7bd93;
+    --line: #3c4a58;
+    --line-soft: rgba(236,230,214,0.14);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: 'Zilla Slab', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.12;
+    margin: 0;
+    color: var(--ink);
+  }
+  a { color: inherit; }
+  img { max-width: 100%; }
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  ::selection { background: var(--rust); color: var(--paper); }
+  :focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; }
+
+  /* ---- top nav ---- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--canvas);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+  }
+  .brand {
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+  }
+  .brand span { color: var(--rust); }
+  nav.links {
+    display: flex;
+    gap: 26px;
+    font-size: 0.92rem;
+  }
+  nav.links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  nav.links a:hover { color: var(--ink); border-color: var(--rust); }
+  .nav-cta {
+    font-size: 0.88rem;
+    background: var(--indigo-deep);
+    color: var(--paper);
+    padding: 9px 18px;
+    border-radius: 2px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  @media (max-width: 720px) {
+    nav.links { display: none; }
+  }
+
+  /* ---- hero ---- */
+  .hero {
+    padding: 68px 0 60px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+  }
+  .eyebrow-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--olive);
+    font-size: 0.88rem;
+    margin-bottom: 18px;
+  }
+  .eyebrow-line .rule { width: 34px; height: 1px; background: var(--olive); display: inline-block; }
+  .hero h1 {
+    font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+    max-width: 15ch;
+  }
+  .hero p.lede {
+    margin-top: 22px;
+    max-width: 46ch;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+  }
+  .hero-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn-primary, .btn-ghost {
+    font-size: 0.94rem;
+    padding: 12px 22px;
+    text-decoration: none;
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--rust);
+    color: var(--paper);
+  }
+  .btn-ghost {
+    border: 1px solid var(--ink);
+    color: var(--ink);
+  }
+
+  /* spec ticket card */
+  .ticket {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 26px 24px;
+  }
+  .ticket-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  .ticket-head .tk-label { font-size: 0.78rem; color: var(--ink-soft); }
+  .ticket-head .tk-no { font-size: 0.78rem; color: var(--ink-soft); }
+  .tk-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 0.92rem;
+    gap: 12px;
+  }
+  .tk-row:last-child { border-bottom: none; }
+  .tk-row .k { color: var(--ink-soft); }
+  .tk-row .v { font-weight: 600; text-align: right; }
+
+  /* ---- section shell ---- */
+  section { padding: 64px 0; border-bottom: 1px solid var(--line-soft); }
+  section:last-of-type { border-bottom: none; }
+  .sec-head {
+    display: grid;
+    grid-template-columns: 0.9fr 1.4fr;
+    gap: 40px;
+    margin-bottom: 38px;
+  }
+  @media (max-width: 720px) {
+    .sec-head { grid-template-columns: 1fr; gap: 10px; }
+  }
+  .sec-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .sec-head .sec-note { color: var(--ink-soft); max-width: 52ch; }
+
+  /* ---- about ---- */
+  .about-body { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 48px; }
+  @media (max-width: 720px) { .about-body { grid-template-columns: 1fr; } }
+  .about-body p { margin: 0 0 16px; max-width: 58ch; }
+  .credential-box {
+    border-left: 2px solid var(--rust);
+    padding-left: 18px;
+  }
+  .credential-box .cr-item { margin-bottom: 16px; }
+  .credential-box .cr-item .cr-title { font-weight: 600; font-size: 0.95rem; }
+  .credential-box .cr-item .cr-sub { color: var(--ink-soft); font-size: 0.86rem; }
+
+  /* ---- services (spec sheet list) ---- */
+  .service-list { border-top: 1px solid var(--line); }
+  .service-row {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 720px) { .service-row { grid-template-columns: 1fr; gap: 6px; } }
+  .service-row h3 { font-size: 1.12rem; }
+  .service-row p { margin: 0; color: var(--ink-soft); max-width: 54ch; }
+
+  /* ---- process ---- */
+  .process-list { counter-reset: step; }
+  .p-step {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .p-step:first-child { border-top: 1px solid var(--line-soft); }
+  .p-step .num {
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.6rem;
+    color: var(--rust);
+    font-weight: 600;
+  }
+  .p-step h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .p-step p { margin: 0; color: var(--ink-soft); max-width: 56ch; font-size: 0.95rem; }
+
+  /* ---- certifications ---- */
+  .cert-tags { display: flex; flex-wrap: wrap; gap: 14px; }
+  .cert-tag {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 14px 18px;
+    width: 190px;
+  }
+  .cert-tag .cert-code {
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--indigo);
+  }
+  .cert-tag .cert-desc { font-size: 0.83rem; color: var(--ink-soft); margin-top: 6px; }
+
+  /* ---- why bangladesh ---- */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  @media (max-width: 720px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-item .why-figure {
+    font-family: 'Zilla Slab', serif;
+    font-size: 2.2rem;
+    color: var(--indigo);
+  }
+  .why-item .why-label { font-weight: 600; margin: 6px 0 6px; }
+  .why-item p { color: var(--ink-soft); font-size: 0.92rem; margin: 0; }
+
+  /* ---- testimonials ---- */
+  .quote-list { display: flex; flex-direction: column; gap: 30px; }
+  .quote-item { max-width: 62ch; }
+  .quote-item blockquote {
+    margin: 0 0 10px;
+    font-family: 'Zilla Slab', serif;
+    font-size: 1.18rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .quote-item cite { font-style: normal; color: var(--ink-soft); font-size: 0.88rem; }
+  .note-inline {
+    margin-top: 28px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    border-top: 1px dashed var(--line);
+    padding-top: 14px;
+  }
+
+  /* ---- contact ---- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 48px;
+  }
+  @media (max-width: 720px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info .ci-row {
+    margin-bottom: 18px;
+  }
+  .contact-info .ci-label { font-size: 0.8rem; color: var(--ink-soft); }
+  .contact-info .ci-val { font-size: 1.02rem; font-weight: 600; }
+  form.contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .field label {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .field input, .field textarea, .field select {
+    width: 100%;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 11px 12px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--ink);
+    border-radius: 2px;
+  }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .submit-btn {
+    align-self: flex-start;
+    background: var(--indigo-deep);
+    color: var(--paper);
+    border: none;
+    padding: 13px 26px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .submit-btn:hover { background: var(--rust); }
+  .form-status { font-size: 0.85rem; color: var(--olive); min-height: 1.2em; }
+
+  footer.site {
+    background: var(--indigo-deep);
+    color: var(--paper);
+    padding: 34px 0;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    opacity: 0.85;
+  }
+
+  /* ---- edit mode ---- */
+  body.edit-mode [data-editable] {
+    outline: 1px dashed var(--rust);
+    outline-offset: 3px;
+    cursor: text;
+    border-radius: 2px;
+  }
+  body.edit-mode [data-editable]:focus {
+    outline: 2px solid var(--rust);
+    background: rgba(162,71,44,0.06);
+  }
+  #saveStatus {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    background: var(--indigo-deep);
+    color: var(--paper);
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    border-radius: 2px;
+    display: none;
+    z-index: 50;
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <div class="brand">Mozahid <span>·</span> Sourcing</div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#testimonials">Testimonials</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Start a conversation</a>
+    <button class="nav-cta edit-toggle" id="editToggleBtn" type="button" style="display:none; margin-left:10px; background:var(--olive); border:none; cursor:pointer;">Edit page</button>
+    <button class="nav-cta save-btn" id="saveBtn" type="button" style="display:none; margin-left:10px; background:var(--rust); border:none; cursor:pointer;">Save changes</button>
+  </div>
+</header>
+<div id="editBanner" style="display:none; background:var(--rust); color:var(--paper); text-align:center; font-size:0.85rem; padding:8px 12px;">
+  Edit mode — click any highlighted text to change it, then press "Save changes."
+</div>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow-line"><span class="rule"></span> Apparel sourcing, Dhaka, Bangladesh</div>
+      <h1 data-editable contenteditable="false">Getting your garments made right, from the first sample to the last carton.</h1>
+      <p class="lede" data-editable contenteditable="false">I'm Mozahid, an apparel sourcing specialist and textile engineer with 10+ years across merchandising, supplier development and quality assurance. I help brands source confidently from Bangladesh — vetted factories, fair costing, and compliance done properly.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contact">Discuss your sourcing needs</a>
+        <a class="btn-ghost" href="#services">See what I do</a>
+      </div>
+    </div>
+    <div class="ticket">
+      <div class="ticket-head">
+        <span class="tk-label">SOURCING PROFILE</span>
+        <span class="tk-no">Est. 2012</span>
+      </div>
+      <div class="tk-row"><span class="k">Experience</span><span class="v" data-editable contenteditable="false">10+ years</span></div>
+      <div class="tk-row"><span class="k">Base</span><span class="v" data-editable contenteditable="false">Dhaka, Bangladesh</span></div>
+      <div class="tk-row"><span class="k">Categories</span><span class="v" data-editable contenteditable="false">Fast fashion, sportswear, workwear, corporate</span></div>
+      <div class="tk-row"><span class="k">Certifications guided</span><span class="v" data-editable contenteditable="false">OCS · GOTS · GRS · RCS · OEKO-TEX</span></div>
+      <div class="tk-row"><span class="k">Education</span><span class="v" data-editable contenteditable="false">B.Sc. Textile Technology</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-body">
+    <div>
+      <div class="eyebrow-line"><span class="rule"></span> About</div>
+      <h2 style="margin-bottom:18px;">Textile engineering background, merchandising experience</h2>
+      <p data-editable contenteditable="false">I trained as a textile engineer and have spent the years since working inside the buying-house side of the garment trade — running merchandising for international clients, developing product from first sample to bulk, and managing the supply chain issues that come up along the way: costing pressure, compliance checks, quality holds, shipment timing.</p>
+      <p data-editable contenteditable="false">That's the perspective I bring to sourcing work: I've sat on the side that answers to the brand, so I know what a factory visit report needs to say, what a costing sheet needs to hold up to, and where things usually go wrong between a tech pack and a finished carton.</p>
+      <p data-editable contenteditable="false">I work directly with brands and small teams who want a sourcing partner on the ground in Bangladesh — not a layer of extra emails, but someone who can walk the factory floor and tell you honestly what's happening.</p>
+    </div>
+    <div class="credential-box">
+      <div class="cr-item">
+        <div class="cr-title">B.Sc. Textile Technology</div>
+        <div class="cr-sub">Ahsanullah University of Science & Technology, 2008–2012</div>
+      </div>
+      <div class="cr-item">
+        <div class="cr-title">PGD, Knitwear Industry Management</div>
+        <div class="cr-sub">BRAC University, 2020–2021</div>
+      </div>
+      <div class="cr-item">
+        <div class="cr-title">Assistant Merchandising Manager</div>
+        <div class="cr-sub">UK-based buying house, ongoing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What I handle</h2>
+      <p class="sec-note">Engage me for one part of the process or the whole run — from finding the right factory to signing off the finished goods.</p>
+    </div>
+    <div class="service-list">
+      <div class="service-row">
+        <h3 data-editable contenteditable="false">Supplier sourcing & vetting</h3>
+        <p data-editable contenteditable="false">Shortlisting and auditing factories against your category, order volume and compliance requirements, with honest factory-floor assessments — not just a supplier list.</p>
+      </div>
+      <div class="service-row">
+        <h3 data-editable contenteditable="false">Merchandising & order management</h3>
+        <p data-editable contenteditable="false">Running the order calendar end to end: TNA tracking, supplier follow-up, sample approvals, and keeping production on schedule.</p>
+      </div>
+      <div class="service-row">
+        <h3 data-editable contenteditable="false">Product development & sampling</h3>
+        <p data-editable contenteditable="false">Turning a tech pack or a reference garment into an approved proto, fit, and pre-production sample — coordinating pattern, fabric and trim at the factory.</p>
+      </div>
+      <div class="service-row">
+        <h3 data-editable contenteditable="false">Costing & negotiation</h3>
+        <p data-editable contenteditable="false">Building costings that hold up — fabric, trims, CM, and freight broken out clearly — and negotiating on your behalf without sacrificing quality.</p>
+      </div>
+      <div class="service-row">
+        <h3 data-editable contenteditable="false">Quality assurance</h3>
+        <p data-editable contenteditable="false">In-line and pre-shipment inspection, AQL checks, and defect resolution before goods leave the factory, not after they land.</p>
+      </div>
+      <div class="service-row">
+        <h3 data-editable contenteditable="false">Sustainability certification guidance</h3>
+        <p data-editable contenteditable="false">Helping suppliers reach and maintain OCS, GOTS, GRS, RCS and OEKO-TEX standards, and interpreting what those certifications actually mean for your product.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How an engagement runs</h2>
+      <p class="sec-note">A straightforward path from brief to shipped goods. Steps can be picked up individually if you already have part of this covered.</p>
+    </div>
+    <div class="process-list">
+      <div class="p-step">
+        <div class="num">01</div>
+        <div>
+          <h3 data-editable contenteditable="false">Brief & requirements</h3>
+          <p data-editable contenteditable="false">We go through your product, target price, volumes, and any certification or compliance requirements before anything else moves.</p>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="num">02</div>
+        <div>
+          <h3 data-editable contenteditable="false">Factory shortlist & vetting</h3>
+          <p data-editable contenteditable="false">I put forward a short list of matched factories with capability, capacity and compliance status checked in person where possible.</p>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="num">03</div>
+        <div>
+          <h3 data-editable contenteditable="false">Costing & negotiation</h3>
+          <p data-editable contenteditable="false">Itemised costings come back for review, with negotiation handled on your behalf until the numbers work for both sides.</p>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="num">04</div>
+        <div>
+          <h3 data-editable contenteditable="false">Sampling & development</h3>
+          <p data-editable contenteditable="false">Proto through pre-production samples, with fit and construction feedback relayed clearly until you're ready to approve bulk.</p>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="num">05</div>
+        <div>
+          <h3 data-editable contenteditable="false">Production & QA</h3>
+          <p data-editable contenteditable="false">In-line checks during bulk production, followed by a pre-shipment inspection against your AQL standard.</p>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="num">06</div>
+        <div>
+          <h3 data-editable contenteditable="false">Shipment & handover</h3>
+          <p data-editable contenteditable="false">Documentation, shipping coordination and a final handover report, so you know exactly what shipped and how it checked out.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Certifications I work with</h2>
+      <p class="sec-note">I help suppliers reach and document these standards, and can advise which ones actually matter for your product and market.</p>
+    </div>
+    <div class="cert-tags">
+      <div class="cert-tag">
+        <div class="cert-code" data-editable contenteditable="false">OCS</div>
+        <div class="cert-desc" data-editable contenteditable="false">Organic Content Standard — tracks organic fibre from source to finished product.</div>
+      </div>
+      <div class="cert-tag">
+        <div class="cert-code" data-editable contenteditable="false">GOTS</div>
+        <div class="cert-desc" data-editable contenteditable="false">Global Organic Textile Standard — organic fibre plus environmental and labour processing criteria.</div>
+      </div>
+      <div class="cert-tag">
+        <div class="cert-code" data-editable contenteditable="false">GRS</div>
+        <div class="cert-desc" data-editable contenteditable="false">Global Recycled Standard — recycled content verification across the supply chain.</div>
+      </div>
+      <div class="cert-tag">
+        <div class="cert-code" data-editable contenteditable="false">RCS</div>
+        <div class="cert-desc" data-editable contenteditable="false">Recycled Claim Standard — chain-of-custody tracking for recycled input materials.</div>
+      </div>
+      <div class="cert-tag">
+        <div class="cert-code" data-editable contenteditable="false">OEKO-TEX</div>
+        <div class="cert-desc" data-editable contenteditable="false">Testing for harmful substances in the finished textile, batch by batch.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Why source from Bangladesh</h2>
+      <p class="sec-note">The case for the country, in plain terms — and where a good sourcing partner makes the difference.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-figure">02</div>
+        <div class="why-label" data-editable contenteditable="false">World's second-largest garment exporter</div>
+        <p data-editable contenteditable="false">Deep manufacturing capacity across knit, woven and specialised categories, built up over four decades.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-figure">↓</div>
+        <div class="why-label" data-editable contenteditable="false">Competitive, transparent costing</div>
+        <p data-editable contenteditable="false">Labour and overhead costs that support sharper pricing — when costings are built honestly and checked properly.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-figure">↑</div>
+        <div class="why-label" data-editable contenteditable="false">Compliance has moved fast</div>
+        <p data-editable contenteditable="false">Post-2013 reforms mean a large base of factories now hold serious safety and social compliance credentials — knowing which ones is the job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What clients say</h2>
+      <p class="sec-note">A few notes from past engagements.</p>
+    </div>
+    <div class="quote-list">
+      <div class="quote-item">
+        <blockquote data-editable contenteditable="false">"Replace with a short quote from a client about the outcome of working with you — what changed, or what problem got solved."</blockquote>
+        <cite data-editable contenteditable="false">— Name, Title, Company</cite>
+      </div>
+      <div class="quote-item">
+        <blockquote data-editable contenteditable="false">"Replace with a second testimonial, ideally about a different part of the process — costing, quality, or communication."</blockquote>
+        <cite data-editable contenteditable="false">— Name, Title, Company</cite>
+      </div>
+    </div>
+    <p class="note-inline">Placeholder quotes — swap these for real client feedback before sharing the site. Two or three short, specific ones will do more work than several generic ones.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <div class="eyebrow-line"><span class="rule"></span> Get in touch</div>
+      <h2 style="margin-bottom:20px;">Tell me what you're trying to source</h2>
+      <div class="ci-row">
+        <div class="ci-label">Email</div>
+        <div class="ci-val" data-editable contenteditable="false">your.email@example.com</div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-label">Phone / WhatsApp</div>
+        <div class="ci-val" data-editable contenteditable="false">+880 XXX XXX XXX</div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-label">Location</div>
+        <div class="ci-val" data-editable contenteditable="false">Dhaka, Bangladesh</div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-label">LinkedIn</div>
+        <div class="ci-val" data-editable contenteditable="false">linkedin.com/in/your-profile</div>
+      </div>
+      <p class="note-inline" style="margin-top:6px;">Placeholder contact details — replace with your real email, number and LinkedIn URL.</p>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="category">Product category</label>
+        <select id="category" name="category">
+          <option>Fast fashion</option>
+          <option>Sportswear</option>
+          <option>Workwear</option>
+          <option>Corporate apparel</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">What are you looking to source?</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button class="submit-btn" type="submit">Send message</button>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap footer-row">
+    <div data-editable contenteditable="false">Mozahid — Apparel Sourcing, Bangladesh</div>
+    <div data-editable contenteditable="false">Merchandising · Product development · Quality assurance</div>
+  </div>
+</footer>
+
+
+<div id="saveStatus"></div>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    try {
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const category = form.category.value;
+      const message = form.message.value.trim();
+      const subject = encodeURIComponent('Sourcing enquiry — ' + category);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Category: ' + category + '\n\n' +
+        message
+      );
+      window.location.href = 'mailto:your.email@example.com?subject=' + subject + '&body=' + body;
+      status.textContent = 'Opening your email client to send this — replace the address in the form with your real one.';
+    } catch (err) {
+      status.textContent = 'Something went wrong opening your email client. Please email directly instead.';
+    }
+  });
+
+  // ---- in-page editing (owner only) ----
+  (async function () {
+    let artifact = null;
+    try {
+      artifact = await window.claude?.use?.('artifact');
+    } catch (err) {
+      artifact = null;
+    }
+    if (!artifact) return; // no edit rights on this view — leave the page as-is
+
+    const editToggleBtn = document.getElementById('editToggleBtn');
+    const saveBtn = document.getElementById('saveBtn');
+    const editBanner = document.getElementById('editBanner');
+    const saveStatus = document.getElementById('saveStatus');
+    const editableEls = document.querySelectorAll('[data-editable]');
+
+    editToggleBtn.style.display = 'inline-block';
+
+    let editing = false;
+    function setEditing(on) {
+      editing = on;
+      document.body.classList.toggle('edit-mode', on);
+      editBanner.style.display = on ? 'block' : 'none';
+      saveBtn.style.display = on ? 'inline-block' : 'none';
+      editToggleBtn.textContent = on ? 'Exit edit mode' : 'Edit page';
+      editableEls.forEach(function (el) {
+        el.setAttribute('contenteditable', on ? 'true' : 'false');
+      });
+    }
+
+    editToggleBtn.addEventListener('click', function () {
+      setEditing(!editing);
+    });
+
+    saveBtn.addEventListener('click', async function () {
+      saveStatus.style.display = 'block';
+      saveStatus.textContent = 'Saving…';
+      try {
+        // exit edit mode visuals before capturing, so saved copy loads clean
+        setEditing(false);
+        const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        const result = await artifact.publish(html);
+        saveStatus.textContent = 'Saved.';
+      } catch (err) {
+        saveStatus.textContent = (err && err.code === 'conflict')
+          ? 'Someone else changed the page first — refresh to see the latest before editing again.'
+          : 'Could not save. Please try again.';
+      }
+      setTimeout(function () { saveStatus.style.display = 'none'; }, 4000);
+    });
+  })();
+</script>
+
+</body>
+</html>
